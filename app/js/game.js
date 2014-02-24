@@ -34,7 +34,7 @@
       if ($(this).text() === '') {
         $(this).text(mark);
         $(this).addClass(mark);
-        isX = !true;
+        isX = !isX;
       }
       return checkforWin;
     });

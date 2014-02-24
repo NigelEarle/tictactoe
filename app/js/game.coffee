@@ -46,5 +46,5 @@ $ ->
     if $(@).text() == ''
       $(@).text(mark) 
       $(@).addClass(mark)
-      isX = !true
+      isX = !isX
     checkforWin
