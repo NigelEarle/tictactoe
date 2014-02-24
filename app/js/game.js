@@ -30,7 +30,7 @@
     });
     return $('.board-cell').on('click', function(e) {
       var mark;
-      mark = isX % 2 === 0 ? 'x' : 'o';
+      mark = isX ? 'x' : 'o';
       if ($(this).text() === '') {
         $(this).text(mark);
         $(this).addClass(mark);
