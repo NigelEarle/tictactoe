@@ -31,7 +31,8 @@ $ ->
       board[0]
     else if board[2] == board[4] == board[6] != ''
       board[2]
-
+    else 
+      ''
     if win != ''
       alert win + 'won!'
       resetBoard()
