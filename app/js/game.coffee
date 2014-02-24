@@ -1,9 +1,9 @@
 $ ->
-  cnt = 0
+  isX = true 
 
   clearBoard = ->
     $('.board-cell').text('')
-    cnt = 0
+    isX = true
 
   $('#start-game').on 'click', (e) ->
     clearBoard()
@@ -15,4 +15,4 @@ $ ->
     if $(@).text() == ''
       $(@).text(mark) 
       $(@).addClass(mark)
-      cnt += 1
+      isX = !true
