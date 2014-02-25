@@ -10,10 +10,13 @@ $ ->
     $('#gameboard').hide()
     $('#start-game').fadeIn(500)
 
-  checkforWin = () ->
+  checkforWin = ->
     board = ($('.board-cell').map (idx,el) ->
       $(el).text()
     ).get()
+
+    console.log "winning combination : "
+
 
     win = if board[0] == board[1] == board[2] != ''
       board[0]
@@ -33,6 +36,10 @@ $ ->
       board[2]
     else 
       ''
+
+    console.log "winning numbers : " + win
+
+
     if win != ''
       alert win + 'won!'
       resetBoard()
@@ -48,4 +55,4 @@ $ ->
       $(@).text(mark) 
       $(@).addClass(mark)
       isX = !isX
-    checkforWin
+    checkforWin()
