@@ -16,7 +16,10 @@
       this.Settings = Settings;
       this.mark = __bind(this.mark, this);
       this.parseBoard = __bind(this.parseBoard, this);
-      this.checkForWin = __bind(this.checkForWin, this);
+      this.announceWinner = __bind(this.announceWinner, this);
+      this.numberOfMoves = __bind(this.numberOfMoves, this);
+      this.restBoard = __bind(this.restBoard, this);
+      this.someoneWon = __bind(this.someoneWon, this);
       this.getBoard = __bind(this.getBoard, this);
       this.$scope.cells = {};
       this.$scope.mark = this.mark;
@@ -31,8 +34,22 @@
       return "" + c0 + c1 + c2;
     };
 
-    BoardCtrl.prototype.checkForWin = function(board) {
+    BoardCtrl.prototype.someoneWon = function(board) {
       return 'xxx' === board || 'ooo' === board;
+    };
+
+    BoardCtrl.prototype.restBoard = function() {
+      return this.$scope.cells = {};
+    };
+
+    BoardCtrl.prototype.numberOfMoves = function() {
+      return Object.keys(this.$scope.cells.length);
+    };
+
+    BoardCtrl.prototype.announceWinner = function() {
+      var winner;
+      winner = numberOfMoves() % 2 === 0 ? 'o' : 'x';
+      return alert("" + winner + " wins!");
     };
 
     BoardCtrl.prototype.parseBoard = function() {
@@ -42,7 +59,11 @@
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         pattern = _ref[_i];
         board = this.getBoard(pattern);
-        _results.push(this.checkForWin(board));
+        if (this.someoneWon(board)) {
+          _results.push(this.announceWinner());
+        } else {
+          _results.push(void 0);
+        }
       }
       return _results;
     };

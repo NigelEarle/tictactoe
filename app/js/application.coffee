@@ -27,13 +27,23 @@ class BoardCtrl
     c2 = c[pattern[2]] || pattern[2]
     "#{c0}#{c1}#{c2}"
 
-   checkForWin: (board) =>
+  someoneWon: (board) =>
    	'xxx' == board || 'ooo' == board
+
+  restBoard: =>
+  	@$scope.cells = {}
+
+  numberOfMoves: =>
+  	Object.keys @$scope.cells.length
+
+  announceWinner: =>
+  	winner = if numberOfMoves() %2 == 0 then 'o' else 'x'
+  	alert "#{winner} wins!"
 
   parseBoard: =>
     for pattern in @Settings.WIN_PATTERNS
       board = @getBoard(pattern)
-      @checkForWin(board)
+      @announceWinner() if @someoneWon(board)
 
   mark: (@$event) =>
     cell = @$event.target.dataset.index
