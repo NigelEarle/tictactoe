@@ -1,9 +1,9 @@
 "use strict"
 
-tictactoe = angular.module 'TicTacToe',[]
+@ticTacToe = angular.module 'TicTacToe',[]
 
 
-tictactoe.constant 'Settings',
+ticTacToe.constant 'Settings',
   WIN_PATTERNS: [
     [0,1,2]
     [3,4,5]

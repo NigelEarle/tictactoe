@@ -11,11 +11,8 @@
         <span class="tic">Tic</span><span class="tac">Tac</span><span class="toe">Toe</span>
       </h1>
     </header>
-    <main role="main" data-ng-controller="BoardController">
-      <section id="start-button" class="button">
-        <button id="start-game">Start the game</button>
-      </section>
-      <section id="gameboard" class="board" style="display:none">
+    <main role="main" data-ng-controller="BoardCtrl">
+      <section id="gameboard" class="board">
         <div id="row-0" class="board-row">
           <div id="cell-0" data-index="0" data-ng-click="mark(0)" class="board-cell top left">{{cells.0}}</div>
           <div id="cell-1" data-index="1" data-ng-click="mark(1)" class="board-cell top center">{{cells.1}}</div>
@@ -33,7 +30,7 @@
         </div>
       </section>
     </main>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
     <script src="/js/application.js"></script>
   </body>
 </html>
