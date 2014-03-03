@@ -114,16 +114,16 @@ h1 {
 }
 
 .tied.message{
-	color: hsla( 0,   0.0%, 100.0%, 1);
-	background-color:( 2,  64.7%,  50.0%, 1 );
+	color: hsla( 0, 0.0%, 100.0%, 1);
+	background-color: hsla( 2, 64.7%, 50.0%, 0.7);
 }
 
 .x.winner.message{
-	background-color: hsla( 208,  55.9%,  44.5%, 1 );
+	background-color: hsla( 208, 55.9%, 44.5%, 0.7);
 }
 
 .o.winner.message{
-	background-color:  hsla( 120,  39.6%,  46.0%, 1 );
+	background-color: hsla( 120, 39.6%, 46.0%, 0.7);
 }
 
 @media (max-width: 760px) {
@@ -141,4 +141,3 @@ h1 {
 		font-size: 32px;
 	}
 }
-
