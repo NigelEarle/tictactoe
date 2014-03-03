@@ -24,7 +24,7 @@ class BoardCtrl
     @db = @$firebase(@dbRef)
 
   startGame: =>
-    @db.$add name:"nwre87", iq: 200
+    @db.$add name: "nwre87", iq: 200
     @$scope.gameOn = true
     @resetBoard()
 
@@ -125,5 +125,5 @@ class BoardCtrl
       @$scope.currentPlayer = @player()
 
 
-BoardCtrl.$inject = ["$scope", "WIN_PATTERNS","$firebase"]
+BoardCtrl.$inject = ["$scope", "WIN_PATTERNS", "$firebase"]
 ticTacToe.controller "BoardCtrl", BoardCtrl
