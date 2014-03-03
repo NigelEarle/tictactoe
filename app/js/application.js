@@ -30,17 +30,34 @@
       this.$scope.mark = this.mark;
       this.$scope.startGame = this.startGame;
       this.$scope.gameOn = false;
-      this.dbRef = new Firebase("https://tictactoe-nwre87.firebaseio.com/");
-      this.db = this.$firebase(this.dbRef);
     }
 
+    BoardCtrl.prototype.uniqueId = function(length) {
+      var id;
+      if (length == null) {
+        length = 8;
+      }
+      id = "";
+      while (id.length < length) {
+        id += Math.random().toString(36).substr(2);
+      }
+      return id.substr(0, length);
+    };
+
     BoardCtrl.prototype.startGame = function() {
-      this.db.$add({
-        name: "nwre87",
-        iq: 200
-      });
-      this.$scope.gameOn = true;
-      return this.resetBoard();
+      this.resetBoard();
+      if (this.unbind) {
+        this.unbind();
+      }
+      this.id = this.uniqueId();
+      this.dbRef = new Firebase("https://tictactoe-nwre87.firebaseio.com/" + this.id);
+      this.db = this.$firebase(this.dbRef);
+      return this.db.$bind(this.$scope, 'cells').then((function(_this) {
+        return function(unbind) {
+          _this.unbind = unbind;
+          return _this.$scope.gameOn = true;
+        };
+      })(this));
     };
 
     BoardCtrl.prototype.getPatterns = function() {
@@ -66,6 +83,7 @@
       this.$scope.theWinnerIs = false;
       this.$scope.cats = false;
       this.cells = this.$scope.cells = {};
+      this.winningCells = this.$scope.winningCells;
       this.$scope.currentPlayer = this.player();
       return this.getPatterns();
     };
